@@ -33,6 +33,13 @@ namespace HRManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
             services.AddDbContext<HRManagementContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
@@ -72,6 +79,8 @@ namespace HRManagement
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 
