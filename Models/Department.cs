@@ -15,6 +15,7 @@ namespace HRManagement.Models
         [Column(TypeName = "nvarchar(100)")]
         public string DepartmentName { get; set; }
         public int? ManagerId { get; set; }
+        [ForeignKey("ManagerId")]
         public Employee Manager { get; set; }
         public virtual ICollection<Employee> Employees { get; set; }
     }
