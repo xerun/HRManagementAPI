@@ -30,6 +30,7 @@ namespace HRManagement.Models
         public double CommissionPCT { get; set; }
         public int? ManagerId { get; set; }
         public Employee Manager { get; set; }
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
+        public int JobId { get; set; }
     }
 }
